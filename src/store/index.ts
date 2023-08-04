@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
-import { attractionAPI } from "../../services/AttractionService";
-
+import { attractionAPI } from "../services/AttractionService";
+import filterReducer from './reducers/FilterSlice'
+import themeReducer from './reducers/ThemeSlice'
 const rootReducer = combineReducers({
+    filterReducer,
+    themeReducer,
     [attractionAPI.reducerPath]: attractionAPI.reducer
 })
 

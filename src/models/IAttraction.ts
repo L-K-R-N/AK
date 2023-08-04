@@ -1,3 +1,5 @@
+import { IAddress } from "./IForm";
+
 export interface IAttraction {
     id: number;
     title: string;
@@ -5,8 +7,3 @@ export interface IAttraction {
     address: IAddress;
 }
 
-export interface IAddress {
-    country: string;
-    city: string;
-    
-}

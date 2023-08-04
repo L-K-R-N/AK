@@ -1,4 +1,4 @@
-export const AttractionsItem: React.FC = () => {
+export const Register: React.FC = () => {
 
     return (
         <div>
