@@ -1,20 +1,24 @@
-import { AttractionsList } from "../components/AttractionsList"
-import { Filter } from "../components/Filter"
-import { FlexStyled } from "../components/Styled/FlexStyled"
-import { Header } from "../components/UI/Header"
-import {useEffect, useState} from 'react'
-import { changeTheme } from "../store/reducers/ThemeSlice"
-import { useAppDispatch, useAppSelector } from "../hooks/redux"
+import { Header } from "../components/Header"
+import {useEffect} from 'react'
+import { useAppSelector } from "../hooks/redux"
+
+
+
+import { DivStyled } from "../components/Styled/DivStyled"
+import SearchAndFilter from "../components/SearchAndFilter"
+import { Wrapper } from "../components/Styled/Wrapper"
+import { Countries } from "../components/Countries"
 export const MainPage: React.FC = () => {
-    const dispatch = useAppDispatch()
     const {currentTheme} = useAppSelector(state => state.themeReducer)
 
    
     return ( 
-        <div >
+        <DivStyled width="100vw" >
             <Header/>
-            {/* <Filter /> */}
-            <AttractionsList/>
-        </div>
+            <Wrapper margin=" 0 auto 5vh auto" >
+                <SearchAndFilter/>
+            </Wrapper>
+            <Countries/>
+        </DivStyled>
     )
 }

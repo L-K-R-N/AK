@@ -28,15 +28,7 @@ interface DivProps {
     position?: string;
     top?: string;
     left?: string;
-    children?: ReactElement;
 }
 
 
-export const Div: React.FC<DivProps> = ({children, ...props}) => {
-    
-    return (
-        <DivStyled {...props}>
-            {children}
-        </DivStyled>
-    )
-}
+

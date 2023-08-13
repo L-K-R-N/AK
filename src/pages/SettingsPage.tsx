@@ -11,9 +11,10 @@ export const SettingsPage: React.FC = () => {
         console.log(currentTheme === 'dark')
     }
 
-    // useEffect(() => {
-    //     document.body.setAttribute('data-theme', currentTheme)
-    // }, [currentTheme])
+    useEffect(() => {
+        document.body.setAttribute('data-theme', currentTheme)
+        console.log(document.body.getAttribute('data-theme'))
+    }, [currentTheme])
 
     return (
         <div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200;300;400;500;600;800;900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -27,31 +29,37 @@
   body {
     width: 100vw;
     height: 100%;
-    font-family: 'Exo 2';
     font-weight: 100;
     background: var(--bg-color)
   }
   
-  body[data-theme='light'] {
-    --bg-color: #ffffff;
-    --second-color: #e6e6e6;
-    --green-color: #8fdb51;
-    --yellow-color: #dbbf51;
-    --text-color: #111111;
-    --text-color2: #363636;
-  
-    --shadow: 0px 10px 17px 0px rgba(86, 86, 86, 0.2);
-  }
-  
-  body[data-theme='dark'] {
+  body[data-theme="dark"] {
     --bg-color: #111111;
-    --second-color: #303030;
+    --second-bg-color: #2b2b2b;
+    --third-bg-color: #616161;
+    --red-color: #ee2222;
     --green-color: #8fdb51;
     --yellow-color: #dbbf51;
     --text-color: #ffffff;
-    --text-color2: #888888;
+    --second-text-color: #888888;
+
+    --blur-color: rgba(0, 0, 0, 0.7);
+    /* --shadow: 0px 8px 15px 0px rgba(55, 55, 55, 0.7); */
   
-    --shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.3);
+  
+  }
+  body[data-theme="light"] {
+    --bg-color: #ffffff;
+    --second-bg-color: #d6d6d6;
+    --third-bg-color: #909090;
+    --red-color: #ee2222;
+    --green-color: #8fdb51;
+    --yellow-color: #dbbf51;
+    --text-color: #000000;
+    --second-text-color: #363636;
+
+    --blur-color: rgba(255, 255, 255, 0.7);
+    /* --shadow: 0px 13px 15px 0px rgba(42, 42, 42, 0.3); */
   }
   
   img {

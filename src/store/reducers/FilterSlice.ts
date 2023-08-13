@@ -1,19 +1,31 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IAddress } from "../../models/IForm";
+import { IAttraction } from "../../models/IAttraction";
+import { ICountry } from "../../models/ICountry";
 
 
 export interface FilterState {
+    sort: string;
+    filtredCountries: ICountry[];
+    likedCountriesNames: string[];
+    // address: IAddress;
+    search: string;
     openedFilters: boolean;
-    address: IAddress;
+    onlyLiked: boolean;
 }
 const initialState: FilterState = {
+    sort: 'area',
+    filtredCountries: [],
+    likedCountriesNames: [],
+    // address: {
+    //     country: ['Russia'],
+    //     city: ['Smolensk'],
+    //     district: ['Zadneprovskiy'],
+    //     street: ['AK'],
+    // },
+    search: '',
     openedFilters: false,
-    address: {
-        country: 'Russia',
-        city: 'Smolensk',
-        district: 'Zadneprovskiy',
-        street: 'AK',
-    }
+    onlyLiked: false,
 
 }
 
@@ -24,21 +36,52 @@ export const FilterSlice = createSlice({
         changeOpenedFilters(state, action: PayloadAction<boolean>) {
             state.openedFilters = action.payload
         },
-        changeAddressCountry(state, action: PayloadAction<string | string[]>) {
-            state.address.country = action.payload
+
+        // setAddressCountry(state, action: PayloadAction<string[]>) {
+        //     state.address.country = action.payload
+        // },
+        // setAddressCity(state, action: PayloadAction<string[]>) {
+        //     state.address.city = action.payload
+        // },
+        // setAddressDistrict(state, action: PayloadAction<string[]>) {
+        //     state.address.district = action.payload
+        // },
+        // setAddressStreet(state, action: PayloadAction<string[]>) {
+        //     state.address.street = action.payload
+        // },
+
+        setSearch(state, action: PayloadAction<string>) {
+            state.search = action.payload
         },
-        changeAddressCity(state, action: PayloadAction<string | string[]>) {
-            state.address.city = action.payload
+        setSort(state, action: PayloadAction<string>) {
+            state.sort = action.payload
         },
-        changeAddressDistrict(state, action: PayloadAction<string | string[]>) {
-            state.address.district = action.payload
+
+        setLikedCountriesNames(state, action: PayloadAction<string[]>) {
+            state.likedCountriesNames = action.payload
         },
-        changeAddressStreet(state, action: PayloadAction<string | string[]>) {
-            state.address.street = action.payload
+        setFiltredCountries(state, action: PayloadAction<ICountry[]>) {
+            state.filtredCountries = action.payload
         },
+        setOnlyLiked(state, action: PayloadAction<boolean>) {
+            state.onlyLiked = action.payload
+        },
+
+
     }
 })  
 
-export const {changeOpenedFilters, changeAddressCountry, changeAddressCity, changeAddressDistrict, changeAddressStreet} = FilterSlice.actions
+export const {
+    setFiltredCountries, 
+    // setAddressCountry, 
+    // setAddressCity, 
+    // setAddressDistrict, 
+    // setAddressStreet, 
+    setSearch, 
+    setSort, 
+    setLikedCountriesNames,
+    changeOpenedFilters,
+    setOnlyLiked,
+} = FilterSlice.actions
 
 export default FilterSlice.reducer

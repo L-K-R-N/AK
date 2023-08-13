@@ -5,7 +5,8 @@ export const ImgStyled = styled.img<ImgProps>`
     width: ${({width}) => width || '100%'};
     height: ${({height}) => height || '100%'};
     background: ${({bakcground}) => bakcground || 'transparent'};
-    cursor: ${({cursor}) => cursor || 'auto'};;
+    object-fit: ${({objectFit}) => objectFit || 'cover'};
+    cursor: ${({cursor}) => cursor || 'auto'};
     
 `
 interface ImgProps {
@@ -13,5 +14,6 @@ interface ImgProps {
     height?: string;
     bakcground?: string;
     cursor?: string;
+    objectFit?: string;
 }
 

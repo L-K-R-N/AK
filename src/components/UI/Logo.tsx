@@ -6,18 +6,21 @@ interface Props {
  }
 
  const LogoStyled = styled(ImgStyled)`
-    
+    width: auto;
+    height: auto;
+    cursor: pointer;
+ `
+ const LinkStyled = styled(Link)`
+    width: 100%;
+    height: 100%;
  `
 
 export const Logo: React.FC<Props> = () => {
 
     return (
-        <Link to={'/'}>
-            <FlexStyled justify={'space-beetwen'} height='100px'  >
-                <ImgStyled src={require("../../img/svg/logo.svg").default} alt="" width='100%' height='50%' style={{cursor: 'pointer'}}/>  
-            </FlexStyled>
-        </Link>
-            
-        
+            <LinkStyled to={'/'}>
+                <LogoStyled src={require("../../assets/svg/logo.svg").default} alt="" />  
+            </LinkStyled>
+
     )
 }

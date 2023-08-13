@@ -2,7 +2,7 @@ import { Control, Controller, ValidationRule } from "react-hook-form"
 import ReactSelect, { MultiValue } from 'react-select'
 import { IOption } from "../models/IForm";
 import { Error } from "./UI/Error";
-import { FilterForm } from "./Filter";
+import FilterForm from "./FilterForm";
 
 
 interface Props {

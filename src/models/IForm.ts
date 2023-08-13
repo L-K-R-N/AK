@@ -1,8 +1,8 @@
 export interface IAddress {
-    country: string | string[];
-    city: string | string[];
-    district: string | string[];
-    street: string | string[];
+    country: string[];
+    city: string[];
+    district: string[];
+    street: string[];
 }
 
 export interface IOption {

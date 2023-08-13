@@ -5,5 +5,6 @@ export interface IAttraction {
     title: string;
     description: string;
     address: IAddress;
+    src: string;
 }
 
