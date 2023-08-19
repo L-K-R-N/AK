@@ -11,10 +11,9 @@ import { changeTheme } from "./store/reducers/ThemeSlice"
 import {useEffect} from 'react'
 import { SettingsPage } from "./pages/SettingsPage"
 import { Header } from "./components/Header"
-import { AttractionPage } from "./pages/AttractionPage"
-export const getImgSrc = (src: string) => {
-	return `require(${src}).default`
-}
+import { CountryPage } from "./pages/CountryPage"
+import { FiltersPage } from "./pages/FiltersPage"
+
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -23,7 +22,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: 'countries/:name',
-		element: <AttractionPage/>,
+		element: <CountryPage/>,
 	},
 
 	{
@@ -37,6 +36,10 @@ const router = createBrowserRouter([
 	{
 		path: '/settings',
 		element: <SettingsPage/>
+	},
+	{
+		path: '/filters',
+		element: <FiltersPage/>
 	},
 ])
 

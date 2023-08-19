@@ -2,19 +2,19 @@ import styled from 'styled-components'
 import { FlexStyled } from '../Styled/FlexStyled'
 import { ImgStyled } from '../Styled/ImgStyled'
 import { Link } from 'react-router-dom'
-import { MdOutlineAttractions } from 'react-icons/md'
+import { FiMenu } from 'react-icons/fi'
 interface Props {
+    click: () => void;
  }
 
- const LogoStyled = styled(MdOutlineAttractions)<LogoStyledProps>`
+ const BurgerStyled = styled(FiMenu)<BurgerStyledProps>`
     width: ${({width}) => width || '40px'};
     height: 100%;
     cursor: pointer;
-    color: var(--second-text-color );
+    color: var(--second-text-color);
     transition: all 0.2s ease-out;
-
     &:hover {
-        color: var(--text-color );
+        color: var(--text-color);
     }
 
     @media screen and (min-width: 768px) {
@@ -22,22 +22,18 @@ interface Props {
     }
  `
 
- interface LogoStyledProps {
+ interface BurgerStyledProps {
     width?: string;
  }
  const LinkStyled = styled(Link)`
     display: flex;
-    justify-content: start;
-    width: 100%;
+    justify-content: end;
+    width: 50%;
     height: 100%;
  `
-export const Logo: React.FC<Props> = () => {
+export const Burger: React.FC<Props> = ({click}) => {
 
     return (
-        <LinkStyled to={'/'}>
-            <LogoStyled/>
-        </LinkStyled>
-        
+        <BurgerStyled onClick={() => click()}/>
     )
 }
-

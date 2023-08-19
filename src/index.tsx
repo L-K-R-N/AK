@@ -33,6 +33,10 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+  max-height: 100% ;
+}
 
 body {
   width: 100vw;

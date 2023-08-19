@@ -7,16 +7,15 @@ import { ICountry } from "../../models/ICountry";
 export interface FilterState {
     sort: string;
     filtredCountries: ICountry[];
-    likedCountriesNames: string[];
     // address: IAddress;
     search: string;
     openedFilters: boolean;
     onlyLiked: boolean;
+    menuActive: boolean;
 }
 const initialState: FilterState = {
     sort: 'area',
     filtredCountries: [],
-    likedCountriesNames: [],
     // address: {
     //     country: ['Russia'],
     //     city: ['Smolensk'],
@@ -26,7 +25,7 @@ const initialState: FilterState = {
     search: '',
     openedFilters: false,
     onlyLiked: false,
-
+    menuActive: false,
 }
 
 export const FilterSlice = createSlice({
@@ -57,16 +56,15 @@ export const FilterSlice = createSlice({
             state.sort = action.payload
         },
 
-        setLikedCountriesNames(state, action: PayloadAction<string[]>) {
-            state.likedCountriesNames = action.payload
-        },
         setFiltredCountries(state, action: PayloadAction<ICountry[]>) {
             state.filtredCountries = action.payload
         },
         setOnlyLiked(state, action: PayloadAction<boolean>) {
             state.onlyLiked = action.payload
         },
-
+        setMenuActive(state, action: PayloadAction<boolean>) {
+            state.menuActive = action.payload
+        }
 
     }
 })  
@@ -79,9 +77,9 @@ export const {
     // setAddressStreet, 
     setSearch, 
     setSort, 
-    setLikedCountriesNames,
     changeOpenedFilters,
     setOnlyLiked,
+    setMenuActive,
 } = FilterSlice.actions
 
 export default FilterSlice.reducer

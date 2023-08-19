@@ -1,28 +1,22 @@
 import { styled } from "styled-components";
 import React from 'react'
+import {CgClose} from 'react-icons/cg'
 
-const CloseContainer = styled.div`
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+
+const CloseStyled = styled(CgClose)<CloseStyledProps>`
+    width: ${({width}) => width || '33px'};
+    height: ${({width}) => width || '33px'};
     cursor: pointer;
-`
-const CloseItem = styled.span<CloseItemProps>`
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: white;
-    transform: ${({transform}) => transform};
+    color: var(--second-text-color );
+    transition: all 0.2s ease-out;
+
+    &:hover {
+        color: var(--text-color );
+    }
 `
 
-interface CloseItemProps {
-    transform: string;
+interface CloseStyledProps {
+    width?: string;
 }
 
 interface Props {
@@ -31,10 +25,8 @@ interface Props {
 
 export const Close: React.FC<Props> = ({close}) => {
     return(
-        <CloseContainer onClick={() => close()}>
-           <CloseItem transform="rotate(45deg)"/>
-           <CloseItem transform="rotate(-45deg)"/>
-        </CloseContainer>
+        <CloseStyled onClick={() => close()}>
+        </CloseStyled>
     )
 }
 

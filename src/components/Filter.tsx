@@ -5,6 +5,7 @@ import { FilterModal } from './FilterModal'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { changeOpenedFilters } from '../store/reducers/FilterSlice'
 import { styled } from 'styled-components'
+import { FilterIco } from './UI/FilterButton'
 
 const IconContainer = styled.div<IconContainerProps>`
     display: flex;
@@ -21,16 +22,9 @@ interface IconContainerProps {
 }
 
 export const Filter = () => {
-    const {openedFilters} = useAppSelector(state => state.filterReducer)
-    const dispatch = useAppDispatch()
-    const openingFilters = () => {  
-        dispatch(changeOpenedFilters(true))
-        console.log(openedFilters)
-    }
+
     return(
-        <IconContainer onClick={() => openingFilters()}>
-            <LuSettings2 color='var(--second-text-color)'/>       
-        </IconContainer>
+        <FilterIco/>
     )
 }
 

@@ -6,6 +6,9 @@ import makeAnimated from 'react-select/animated'
 import { changeOpenedFilters, setOnlyLiked } from "../store/reducers/FilterSlice"
 import { SelectController } from "./SelectController"
 import { IAddress } from '../models/IForm'
+import { styled } from 'styled-components'
+import Sort from './Sort'
+import { FlexStyled } from './Styled/FlexStyled'
 
 
 export interface FilterForm {
@@ -13,7 +16,29 @@ export interface FilterForm {
     liked: boolean;
 }
 
+const SortContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: block;
 
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+`
+
+const Label = styled.label`
+    color: var(--text-color);
+`
+
+const FilterFormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+
+`
 export const FilterForm: React.FC = () => {
     const { onlyLiked} = useAppSelector(state => state.filterReducer)
     const dispatch = useAppDispatch()
@@ -58,8 +83,14 @@ export const FilterForm: React.FC = () => {
 
     
     return(
-        <form onSubmit={handleSubmit(submit, error)}>
-            <input type="checkbox" {...register('liked')} checked={onlyLiked} onChange={() => dispatch(setOnlyLiked(onlyLiked ? false : true))}/>
+        <FilterFormContainer onSubmit={handleSubmit(submit, error)}>
+            <FlexStyled>
+                <Label htmlFor="onlyLiked">Только избранные страны</Label>
+                <input id='onlyLiked' type="checkbox" {...register('liked')} checked={onlyLiked} onChange={() => dispatch(setOnlyLiked(onlyLiked ? false : true))}/>
+            </FlexStyled>
+            <SortContainer>
+                <Sort/>
+            </SortContainer>
             {/* <input type="text" {...register('address.street')} aria-invalid={errors.address?.street ? true : false}/> */}
 
                 {/* <div>
@@ -133,9 +164,9 @@ export const FilterForm: React.FC = () => {
                     <label htmlFor="street">Выберите улицу</label>
                     <input type="text" {...register('address.street')} aria-invalid={errors.address?.street ? true : false}/>
                 </div>*/}
-                    <button>Найти</button>
-                    <button onClick={() => reset()} type="button">Очистить форму</button> 
-                </form>
+                    {/* <button>Найти</button>
+                    <button onClick={() => reset()} type="button">Очистить форму</button>  */}
+                </FilterFormContainer>
     )
 }
 

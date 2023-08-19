@@ -7,11 +7,7 @@ export const ProfilePage: React.FC = () => {
     return (
         <div>
             <Header/>
-            <Navbar
-                links={[
-                    {to: '/settings', value: 'Settings'}
-                ]}    
-            />
+            
         </div>
     )
 }

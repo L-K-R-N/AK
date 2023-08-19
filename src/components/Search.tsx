@@ -13,7 +13,6 @@ export const Search: React.FC = () => {
     const {search} = useAppSelector(state => state.filterReducer)
    const searchAttraction = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearch(e.target.value))
-        console.log(e.target.value)
    }
     return(
         <Input

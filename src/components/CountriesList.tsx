@@ -14,15 +14,18 @@ import { ICountry } from '../models/ICountry'
 export const CountriesCards = styled.div`
     display: grid;
     width: 100%;
+    height: 100%;
     grid-template-columns: repeat(1, 1fr);
-    gap: 8vh;
+    gap: 5vh;
 
-    @media screen and (min-width: 700px) {
+    @media screen and (min-width: 500px) {
         grid-template-columns: repeat(2, 1fr);
+        
     }
 
-    @media screen and (min-width: 1100px) {
+    @media screen and (min-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
+        gap: 7vh;
     }
 `
 interface Props {
@@ -41,19 +44,19 @@ export const CountriesList: React.FC<Props> = ({countries}) => {
     return (
         <CountriesCards >
         
-        {countries.map(country => (
+        {countries.map((country) => 
                 
                 <Card 
-                    click={() => navigate(`/countries/${country.name.common}`)}
-                    key={country.name.official}
+                    click={() => navigate(`/countries/${country.name.official}`)}
+                    key={country.flags.svg}
+                    area={country.area}
                     capitals={country.capital}
                     officialName={country.name.official}
-                    status={country.status}
                     population={country.population}  
                     name={country.name.common} 
                     src={country.flags.svg}
-                    alt={country.flags.alt}></Card>)
-            )}
+                    alt={country.flags.alt} 
+                /> )}
         
         </CountriesCards>
         

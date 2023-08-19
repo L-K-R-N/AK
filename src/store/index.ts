@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 import { attractionAPI } from "../services/AttractionService";
 import filterReducer from './reducers/FilterSlice'
+import countriesReducer from './reducers/CountriesSlice'
 import themeReducer from './reducers/ThemeSlice'
 import { countriesAPI } from "../services/CountriesService";
 import { 
@@ -16,6 +17,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 const rootReducer = combineReducers({
     filterReducer,
+    countriesReducer,
     themeReducer,
     [attractionAPI.reducerPath]: attractionAPI.reducer,
     [countriesAPI.reducerPath]: countriesAPI.reducer
@@ -36,7 +38,7 @@ export const setupStore = () => {
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['filterReducer']
+    whitelist: ['countriesReducer']
   }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

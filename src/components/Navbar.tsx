@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { NavStyled } from './Styled/Nav/NavStyled'
-import { UlStyled } from './Styled/Nav/UlStyled'
-import { LiStyled } from './Styled/Nav/LiStyled';
+
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -14,16 +12,40 @@ interface ILink {
     value: string;
 }
 
+const Nav = styled.nav`
+    width: 100%;
+    height: 100%;
+
+`
+const Ul = styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    
+`
+const Li = styled.li`
+
+`
+const LinkStyled = styled(Link)`
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 100%;
+`
+
+
 export const Navbar: React.FC<Props> = ({links, ...props}) => {
 
     return (
-        <NavStyled>
-            <UlStyled>
+        <Nav>
+            <Ul>
                 {links.map(link =>
-                    <Link to={link.to}>{link.value}</Link>
+                    <Li><LinkStyled to={link.to}>{link.value}</LinkStyled></Li>
                     )}
-            </UlStyled>
-        </NavStyled>
+            </Ul>
+        </Nav>
     )
 }
 

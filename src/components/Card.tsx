@@ -35,7 +35,6 @@ export const CardElement = styled.div<CardElementProps>`
     background: ${({background}) => background};
     z-index: ${({zIndex }) => zIndex || 10};
     transition: opacity 0.3s ease-out;
-    box-shadow: var(--shadow);
     backdrop-filter: blur(${({blur}) => blur});
     padding: ${({padding}) => padding || '0'};
     &:hover {
@@ -61,8 +60,16 @@ export interface CardElementProps {
 
 const CardTitle = styled.h4<CardTitleProps>`
     color: ${({color}) => color || 'var(--text-color)'};
-    font-size: 180%;
+    font-size: 120%;
     font-weight: var(--fw-medium);
+
+    @media screen and (min-width: 768px) {
+        font-size: 140%;
+    }
+
+    @media screen and (min-width: 1200px) {
+        font-size: 160%;
+    }
 `
 
 interface CardTitleProps {
@@ -70,9 +77,17 @@ interface CardTitleProps {
 }
 
 const CardText = styled.p<CardTextProps>`
-    font-size: 120%;
+    font-size: 80%;
     letter-spacing: 1px;
     color: ${({color}) => color || 'var(--text-color)'};
+
+    @media screen and (min-width: 768px) {
+        font-size: 90%;
+    }
+
+    @media screen and (min-width: 1200px) {
+        font-size: 110%;
+    }
 `
 
 interface CardTextProps {
@@ -84,10 +99,10 @@ interface CardTextProps {
 
 interface Props {
     name: string;
+    area: number;
     capitals: string[] | undefined;
     population: number;
     officialName: string;
-    status: string | undefined;
     src: string;
     alt: string;
     click: () => void;
@@ -95,28 +110,29 @@ interface Props {
 
 export const Card: React.FC<Props> = ({
     name, 
+    area,
     capitals, 
     population, 
     officialName,
-    status,
+
     src, 
     alt, 
     click
     }) => {
 
     
-    const [like, setLike] = useState<boolean>(false)
     const navigate = useNavigate()
     return (
        <CardContainer onClick={() => click()}>
             <CardElement 
+                zIndex={101}
                 background="var(--second-bg-color)"
                 gridArea={'1 / 1 / 2 / 5'} 
                 justify="space-between"
-                padding=" 0 20px"
+                padding=" 0 10px"
             >
                 <CardTitle>{name}</CardTitle>
-                <Like countryOfficialName={officialName} like={like} setLike={setLike}/>
+                <Like countryOfficialName={officialName}/>
                 {/* <AiOutlineHeart  height={'100%'} style={{height: '100%', width: '33px', color: 'var(--red-color)'}}/> */}
                 {/* <ImgStyled width={'96%'} height="96%" src={src} alt="" /> */}
             </CardElement>
@@ -134,7 +150,7 @@ export const Card: React.FC<Props> = ({
                 zIndex={100}
                 padding="2%"
                 background="var(--blur-color)"
-                blur="10px"
+                blur="3px"
                 gridArea={'2 / 1 / 6 / 5'} 
                 direction="column"
                 align="center"
@@ -142,16 +158,14 @@ export const Card: React.FC<Props> = ({
                 opacity={0}
                 hoverOpacity={1}
             >
-                <CardText>Official name: {officialName}</CardText>
-                <CardText>
-                    {capitals 
-                        ? `Capitals: ${capitals?.map(capital => capital)}`
+                <CardText>Оффициальное название: {officialName}</CardText>
+                <CardText>Столицы: {capitals 
+                        ?  `${capitals?.map(capital => capital)}`
                         : '-'
-                            
-                    }
+                        }
                 </CardText>
-                <CardText>Population: {population}</CardText>
-                <CardText>Status: {status ? status : '---'}</CardText>
+                <CardText>Площадь: {area}</CardText>
+                <CardText>Население: {population}</CardText>
                 
             </CardElement>
 

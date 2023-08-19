@@ -14,6 +14,13 @@ export const countriesAPI = createApi({
                     _limit: limit,
                 }
             })
+        }),
+
+        fetchCountryByName: build.query<ICountry[], string | undefined>({
+            query: (name: string) => ({
+                url: `name/${name}`,
+
+            })
         })
     })
 })

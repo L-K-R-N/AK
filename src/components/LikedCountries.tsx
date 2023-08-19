@@ -12,19 +12,19 @@ const CountriesStyled = styled.div`
 
 export const LikedCountries: React.FC = () => {
     const [limit, setLimit] = useState<number>(10)
-    const {data: countries, isLoading, isError, isSuccess, isFetching} = countriesAPI.useFetchAllCountriesQuery(limit)
+    const {data: countries, isLoading, isError} = countriesAPI.useFetchAllCountriesQuery(limit)
     const dispatch = useAppDispatch()
-    const {sort, search, likedCountriesNames, onlyLiked} = useAppSelector(state => state.filterReducer)
-    const filtredCountry = useFilterCountries(search, countries, sort, likedCountriesNames, onlyLiked)
-    // const likedCountries = useLikedCountries(likedCountriesNames, countries)
-
+    const {sort, search, onlyLiked} = useAppSelector(state => state.filterReducer)
+    const {likedCountriesNames} = useAppSelector(state => state.countriesReducer)
+    const filtredCountries = useFilterCountries(search, countries, sort, likedCountriesNames, onlyLiked)
+    
     return(
         <CountriesStyled>
-            <Wrapper >
+            {/* <Wrapper > */}
                 {isLoading && <h1>Loading</h1>}
                 {isError && <h1>Error</h1>}
                 {/* <CountriesList countries={likedCountries ? likedCountries : []}/> */}
-            </Wrapper>
+            {/* </Wrapper> */}
         </CountriesStyled>
     )
 }

@@ -26,7 +26,6 @@ const useSortCountries = (sort: string, countries: ICountry[] | undefined) => {
 export const useFilterCountries = (query: string, countries: ICountry[] | undefined, sort: string, liked: string[], onlyLiked: boolean) => {
     const sortedCountries = useSortCountries(sort, countries)
     const onlyLikedSortedCountries = useLikedCountries(liked, sortedCountries)
-    console.log(countries)
     const sortedAndSearchedCountries = useMemo(() => {
         return onlyLiked 
                     ? 
@@ -45,4 +44,12 @@ export const useLikedCountries = (liked: string[], countries: ICountry[] | undef
     }, [liked, countries])
 
     return likedCountries
+}
+
+export const useGetCountriesByCodes = (countries: ICountry[] | undefined, codes: string[]) => {
+    const countriesByCodes = useMemo(() => {
+        return countries?.filter(country => codes.includes(country.cca3))
+    }, [countries, codes])
+
+    return countriesByCodes
 }

@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux"
 export const FilterModal: React.FC = () => {
     const dispatch = useAppDispatch()
     const {openedFilters} = useAppSelector(state => state.filterReducer)
-
+   
     const closeModal = () => {
         dispatch(changeOpenedFilters(false))
     }

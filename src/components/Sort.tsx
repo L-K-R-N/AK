@@ -11,11 +11,21 @@ const SortSelect = styled.select`
     color: var(--text-color);
     padding: 4% 11%;
     border: none;
-
+    font-family: var(--family);
+    width: 100%;
+    height: 100%;
+    
+    cursor: pointer;
+    outline: 1px solid var(--second-bg-color);
+    transition: all 0.1s ease-out;
     &:focus {
-        outline: none;
-        border: none;
+        outline: 2px solid var(--second-text-color);
     }
+    &:hover {
+        outline: 2px solid var(--second-text-color);
+        
+    }
+
 `
 
 const sortedOptions = [
@@ -37,7 +47,6 @@ export const Sort = () => {
 
     const dispatch = useAppDispatch()
     const func = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value)
         dispatch(setSort(e.target.value))
     }
     return(
