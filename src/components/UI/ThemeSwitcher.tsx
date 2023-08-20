@@ -60,6 +60,11 @@ export const ThemeSwitcher: React.FC = () => {
         dispatch(changeTheme(currentTheme === 'light' ? 'dark' : 'light'))
     }
 
+   
+    
+    useEffect(() => {
+        document.body.setAttribute('data-theme', currentTheme)
+    }, [])
     useEffect(() => {
         document.body.setAttribute('data-theme', currentTheme)
     }, [currentTheme])

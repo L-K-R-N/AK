@@ -38,7 +38,7 @@ export const setupStore = () => {
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['countriesReducer']
+    whitelist: ['countriesReducer', 'themeReducer']
   }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
