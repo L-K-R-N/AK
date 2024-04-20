@@ -1,6 +1,5 @@
 # Adventure Kaleidoscope
 Это SPA, mobile first проект, выполненный на React, TypeScript.
-
 <br>
 
 #### Протестировать проект можно тут: https://eptaaaaaaaa.github.io/AK/
