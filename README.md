@@ -1,5 +1,5 @@
-# AK или Adventure Kaleidoscope
-Это SPA, mobile first проект, выполненный на React, TypeScript, в котором можно узнать различную информацию про ВСЕ страны мира.
+# Adventure Kaleidoscope
+Это SPA, mobile first проект, выполненный на React, TypeScript.
 
 <br>
 
