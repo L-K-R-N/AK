@@ -5,9 +5,6 @@
 
 #### Протестировать проект можно тут: https://eptaaaaaaaa.github.io/AK/
 
-## ОПИСАНИЕ ВЕРСИЙ
-Скоро...
-
 ## СТЕК ПРОЕКТА
 * React (Redux Toolkit)
 * TypeScript
